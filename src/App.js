@@ -19,25 +19,28 @@ class App extends React.Component {
 
   getMovie = async (e) => {
     e.preventDefault();
-    const API_CALL = await fetch(` http://www.omdbapi.com/?i=tt3896198&apikey=ad13367e`);
+    const TITLE = e.target.elements.title.value; 
+    const API_CALL = await fetch(` http://www.omdbapi.com/?t=${TITLE}&apikey=${API_KEY}`);
     const data = await API_CALL.json();
     console.log(data)
-    // this.setState({
-    // Poster: data.Poster,
-    // Released: data.Title,
-    // Rated: data.Rated,
-    // Genre: data.Genre,
-    // Website: data.Website,
-    // Awards: data.Awards,
-    // Ratings: data.Ratings,
-    // error: ''
-    // });
+    this.setState({
+    Title: data.Title,  
+    Poster: data.Poster,
+    Released: data.Released,
+    Rated: data.Rated,
+    Genre: data.Genre,
+    Website: data.Website,
+    Awards: data.Awards,
+    Ratings: data.Ratings,
+    error: ''
+    });
   }
   
   render() {
     return (
       <div className="App">
-       <MovieCard getMovie = {this.getMovie}/>
+       <MovieCard getMovie = {this.getMovie}
+       Released = {this.props.Released}/>
       </div>
     );
   }
