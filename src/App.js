@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieCard from './components/MovieCard.js'
+import Form from './components/Form.js'
 // import './App.css';
 
 const API_KEY = "ad13367e";
@@ -7,6 +8,7 @@ const API_KEY = "ad13367e";
 class App extends React.Component {
 
   state = {
+    Title: undefined,
     Poster: undefined,
     Released: undefined,
     Rated: undefined,
@@ -39,8 +41,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <MovieCard getMovie = {this.getMovie}
-       Released = {this.props.Released}/>
+       <Form getMovie = {this.getMovie}/>
+       <MovieCard Title = {this.state.Title}/>
       </div>
     );
   }

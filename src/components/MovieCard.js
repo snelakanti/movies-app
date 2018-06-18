@@ -6,9 +6,7 @@ class MovieCard extends React.Component{
     return(
 <div>
     MovieCard component
-    Released: {this.props.Released}
-
-    <button onClick = {this.props.getMovie}>Movies</button>
+    Title: {this.props.Title}
 </div>
     )}
 }
